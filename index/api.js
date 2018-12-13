@@ -1,8 +1,8 @@
 // banner-api
 let index_get_banner = "/api/index/get_banner";
-// 走进鼎吉
+// 走进秀学车
 let index_get_about = "/api/index/get_about";
-// 发现最美鼎吉
+// 发现最美秀学车
 let index_get_beautiful = "/api/index/get_beautiful";
 // 教练风采
 let index_get_coach = "/api/index/get_coach";
@@ -70,12 +70,12 @@ function get_name(get_name, index_get_name) {
 	$(get_name).find(".img-one").html(srcone);
 	$(get_name).find(".img-two").html(srctwo);
 }
-// 走进鼎吉
+// 走进秀学车
 function get_about() {
 	get_name(".get_about", index_get_about);
 }
 
-// 发现最美鼎吉
+// 发现最美秀学车
 function get_beautiful() {
 	let ajaxdata = {
 		 
