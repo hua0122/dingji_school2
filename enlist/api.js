@@ -32,12 +32,11 @@ function get_banner() {
 	}
 	let data = ajaxGet(sign_get_banner, ajaxdata)
 	let src = "";
-	if(data.status=="200"){
 	for (var i = 0; i < data.data.length; i++) {
 		src += "<li style='background:url(" + domainName + data.data[i].picurl +
 			") 50% 50% no-repeat;background-size: 100%;'></li>";
 
-	}}
+	}
 	$(".slides").html(src);
 }
 // 场地列表
@@ -215,7 +214,6 @@ function get_station() {
 	}
 	let data = ajaxGet(sign_get_station, ajaxdata)
 	let src = "";
-	if(data.status=="200"){
 	sessionStorage.setItem("get_station", JSON.stringify(data.data))
 	var map = new BMap.Map("container");
 	var point1 = new BMap.Point(latlng.lng, latlng.lat);
@@ -231,12 +229,11 @@ function get_station() {
 			'<input type="hidden" class="station_id" value="' + data.data[i].id + '" />' +
 			'</span>' +
 			'<a class="address" class="right address">距您' + distancetext +
-			'km <img src="../static/images/map1.png" width="30"/></a>' +
+			'km <span  class="fa fa-map-marker"></span></a>' +
 			'</div>' +
 			'</li>';
 
 		getBaiduLocation(".address", latlng.lng, latlng.lat, data.data[i].lng, data.data[i].lat); //转换为百度坐标
-	}
 	}
 	$(".stationitem").html(src);
 }
@@ -462,7 +459,8 @@ function transform_order() {
 	let ajaxdata = {
 		name: $("#name").val(),
 		phone: $("#phone").val(),
-		station_id: $("#station_id").val()
+		station_id: $("#station_id").val(),
+		money:"0.01"
 	}
 	let data = ajaxPost(sign_apply, ajaxdata)
 	if (data.status == "200") {

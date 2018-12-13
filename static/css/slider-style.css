@@ -14,7 +14,6 @@
 .cs-circleslight .br-video .close-btn,
 .cs-circleslight .br-large-loading,
 .cs-circleslight .br-loading {
-	background-image:url('../images/controls.png');
 }
 
 .cs-circleslight .br-previous,
@@ -59,16 +58,19 @@
 	.cs-circleslight .br-slidecontrol ul li {
 		display:inline-block !important;
 		float:none !important;
-		width:22px;
-		height:22px;
-		background-position:0px -120px;
+		width:10px;
+		height:10px;
+		border-radius: 100%;
+		background: #fff;
 		filter:none !important;
+		margin: 0 .5rem;
 	}
 
 	.cs-circleslight .br-slidecontrol ul li .br-control-selected {
-		width:22px;
-		height:22px;
-		background-position:-30px -150px;
+		width:10px;
+		height:10px;
+		border-radius: 100%;
+		background: #0067ff;
 	}
 
 	.cs-circleslight .br-slidecontrol ul li:hover {

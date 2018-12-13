@@ -46,7 +46,7 @@ $(function() {
 function getydxc() {
 	$.ajax({
 		type: 'GET',
-		url: 'http://ceshi.yidianxueche.cn/s_user/tp.php?method=getwxpz&school_id='+school_id,
+		url: 'http://admin.yidianxueche.cn/s_user/tp.php?method=getwxpz&school_id=' + school_id,
 		dataType: 'json',
 		success: function(data) {
 			sessionStorage.setItem("wxdata", JSON.stringify(data));
@@ -57,16 +57,17 @@ function getydxc() {
 					timestamp: data.content.timestamp, // 必填，生成签名的时间戳
 					nonceStr: data.content.nonceStr, // 必填，生成签名的随机串
 					signature: data.content.signature, // 必填，签名，见附录1
-					jsApiList: ['updateTimelineShareData','onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo',
+					jsApiList: ['updateTimelineShareData','updateAppMessageShareData', 'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ',
+						'onMenuShareWeibo',
 						'onMenuShareQZone', 'getLocation', 'chooseWXPay'
 					] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 				});
 
-				var title = "秀学车服务平台";
+				var title = "易点学车服务平台";
 				// var link = "http://ydxctrue.yidianxueche.cn/";
 				var link = "http://bmqdtest.yidianxueche.cn/";
 				var imgUrl = "http://ydxctrue.yidianxueche.cn/template/wap/public/css/self/image/banner_1.jpg";
-				var desc = "人工智能引领驾培未来，秀学车定制中国好司机";
+				var desc = "人工智能引领驾培未来，易点学车定制中国好司机";
 				var type = "";
 				var dataUrl = "";
 				wx.ready(function() {
@@ -81,72 +82,77 @@ function getydxc() {
 							}))
 						}
 					});
-// 					wx.onMenuShareTimeline({
-// 						title: title, // 分享标题
-// 						link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-// 						imgUrl: imgUrl, // 分享图标
-// 						trigger: function(res) {
-// 						},
-// 						success: function(res) {
-// 						},
-// 						cancel: function(res) {
-// 						},
-// 						fail: function(res) {
-// 						}
-// 					});
-// 					wx.onMenuShareAppMessage({
-// 						title: title, // 分享标题
-// 						desc: desc, // 分享描述
-// 						link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-// 						imgUrl: imgUrl, // 分享图标
-// 						type: type, // 分享类型,music、video或link，不填默认为link
-// 						dataUrl: dataUrl, // 如果type是music或video，则要提供数据链接，默认为空
-// 						trigger: function(res) {
-// 						},
-// 						success: function(res) {
-// 						},
-// 						cancel: function(res) {
-// 						},
-// 						fail: function(res) {
-// 						}
-// 					});
-// 					wx.onMenuShareQQ({
-// 						title: title, // 分享标题
-// 						desc: desc, // 分享描述
-// 						link: link, // 分享链接
-// 						imgUrl: imgUrl, // 分享图标
-// 						success: function() {
-// 							// 用户确认分享后执行的回调函数
-// 						},
-// 						cancel: function() {
-// 							// 用户取消分享后执行的回调函数
-// 						}
-// 					});
-// 					wx.onMenuShareWeibo({
-// 						title: title, // 分享标题
-// 						desc: desc, // 分享描述
-// 						link: link, // 分享链接
-// 						imgUrl: imgUrl, // 分享图标
-// 						success: function() {
-// 							// 用户确认分享后执行的回调函数
-// 						},
-// 						cancel: function() {
-// 							// 用户取消分享后执行的回调函数
-// 						}
-// 					});
 					wx.updateTimelineShareData({
 						title: title, // 分享标题
 						desc: desc, // 分享描述
 						link: link, // 分享链接
 						imgUrl: imgUrl, // 分享图标
-						trigger: function(res) {
-						},
+						trigger: function(res) {},
 						success: function(res) {
-								// document.title="新接口已分享"
+							// document.title="新接口已分享"
 						},
-						cancel: function(res) {
+						cancel: function(res) {},
+						fail: function(res) {}
+					});
+					wx.onMenuShareTimeline({
+						title: title, // 分享标题
+						link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+						imgUrl: imgUrl, // 分享图标
+						success: function() {
+							// 用户确认分享后执行的回调函数
 						},
-						fail: function(res) {
+						cancel: function() {
+							// 用户取消分享后执行的回调函数
+						}
+					});
+					wx.onMenuShareAppMessage({
+						title: title, // 分享标题
+						desc: desc, // 分享描述
+						link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+						imgUrl: imgUrl, // 分享图标
+						type: type, // 分享类型,music、video或link，不填默认为link
+						dataUrl: dataUrl, // 如果type是music或video，则要提供数据链接，默认为空
+						success: function() {
+							// 用户确认分享后执行的回调函数
+						},
+						cancel: function() {
+							// 用户取消分享后执行的回调函数
+						}
+					});
+					wx.onMenuShareQQ({
+						title: title, // 分享标题
+						desc: desc, // 分享描述
+						link: link, // 分享链接
+						imgUrl: imgUrl, // 分享图标
+						success: function() {
+							// 用户确认分享后执行的回调函数
+						},
+						cancel: function() {
+							// 用户取消分享后执行的回调函数
+						}
+					});
+					wx.onMenuShareWeibo({
+						title: title, // 分享标题
+						desc: desc, // 分享描述
+						link: link, // 分享链接
+						imgUrl: imgUrl, // 分享图标
+						success: function() {
+							// 用户确认分享后执行的回调函数
+						},
+						cancel: function() {
+							// 用户取消分享后执行的回调函数
+						}
+					});
+					wx.onMenuShareQZone({
+						title: title, // 分享标题
+						desc: desc, // 分享描述
+						link: link, // 分享链接
+						imgUrl: imgUrl, // 分享图标
+						success: function() {
+							// 用户确认分享后执行的回调函数
+						},
+						cancel: function() {
+							// 用户取消分享后执行的回调函数
 						}
 					});
 				});
@@ -156,7 +162,7 @@ function getydxc() {
 		},
 		error: function(data) {
 			//layer.msg('删除失败!',{icon:1,time:1000});;
-		},//以下代码放入success内，
+		}, //以下代码放入success内，
 
 	});
 }
@@ -190,7 +196,7 @@ window.onresize = function() {
 };
 // 设置网页title
 function settitle() {
-	document.title = "秀学车";
+	document.title = "鼎吉驾校";
 
 }
 // 微信登录

@@ -1,5 +1,5 @@
 // 域名地址
-let domainName = "http://ceshi.yidianxueche.cn";
+let domainName = "http://admin.yidianxueche.cn";
 // 学校id
 let school_id = 5;
 // 获取保存的经纬度
@@ -12,7 +12,7 @@ let user_index = "/api/user/index";
 // ajax-get调用
 function ajaxGet(_url, _data) {
 	let openid = sessionStorage.getItem("openid");
-	_data["openid"] = openid;
+	_data["openid"] = openid,
 	_data["school_id"] = school_id;
 	var dataAjax = "";
 	$.ajax({
