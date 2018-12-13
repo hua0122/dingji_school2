@@ -277,7 +277,7 @@ function submit_sign() {
 	}
 
 	if (!$('#color-input-red').is(':checked')) {
-		alert('请先阅读并同意易点学车学车协议');
+		alert('请先阅读并同意 秀学车学车协议');
 		return false;
 	}
 
@@ -324,10 +324,10 @@ function submit_sign() {
 	let data = ajaxPost(sign_submit_sign, ajaxdata);
 
 	if (data.status == "200") {
-		var title = "易点学车";
+		var title = " 秀学车";
 		var link = "http:/ydxctrue.yidianxueche.cn/client/";
 		var imgUrl = "http:/ydxctrue.yidianxueche.cn/client/";
-		var desc = "易点学车";
+		var desc = " 秀学车";
 		var type = "";
 		var dataUrl = "";
 		wx.ready(function() {
