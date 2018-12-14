@@ -60,6 +60,7 @@ function get_area() {
 
 function area(longitude, latitude) {
 	let uniqsortdata = JSON.parse(sessionStorage.getItem("uniqsortdata"));
+		alert(JSON.stringify(uniqsortdata))
 	let src = "";
 	if (uniqsortdata != null && uniqsortdata != "null" && uniqsortdata != undefined && uniqsortdata != "" && uniqsortdata !=
 		"undefined") {
@@ -70,6 +71,7 @@ function area(longitude, latitude) {
 
 		}
 		let data = ajaxGet(sign_get_area, ajaxdata)
+		alert(JSON.stringify(data))
 		var map = new BMap.Map("container");
 		var point1 = new BMap.Point(longitude, latitude);
 
