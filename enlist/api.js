@@ -49,13 +49,17 @@ function get_area() {
 			alert(22)
 		area(latlng.lng, latlng.lat);
 	} else {
+		alert(33)
 		wx.ready(function() {
 			wx.getLocation({
 				type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
 				success: function(res) {
 					alert(res.longitude+", "+res.latitude)
 					area(res.longitude, res.latitude);
-				}
+				},
+				cancel: function(res) {
+					alert("失败")
+				},
 			});
 		});
 	}
