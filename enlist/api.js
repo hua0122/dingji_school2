@@ -43,24 +43,15 @@ function get_banner() {
 }
 // 场地列表
 function get_area() {
-	alert(11)
 	if (latlng != null && latlng != undefined && latlng != "" && latlng != "null" && latlng != "undefined") {
-		
-			alert(22)
 		area(latlng.lng, latlng.lat);
 	} else {
-		alert(33)
 		wx.ready(function() {
 			wx.getLocation({
 				type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
 				success: function(res) {
-					alert("嘿嘿")
-					alert(res.longitude+", "+res.latitude)
 					area(res.longitude, res.latitude);
-				},
-				cancel: function(res) {
-					alert("失败")
-				},
+				}
 			});
 		});
 	}
@@ -68,9 +59,7 @@ function get_area() {
 }
 
 function area(longitude, latitude) {
-	alert("area")
 	let uniqsortdata = JSON.parse(sessionStorage.getItem("uniqsortdata"));
-		alert(JSON.stringify(uniqsortdata))
 	let src = "";
 	if (uniqsortdata != null && uniqsortdata != "null" && uniqsortdata != undefined && uniqsortdata != "" && uniqsortdata !=
 		"undefined") {
@@ -81,7 +70,6 @@ function area(longitude, latitude) {
 
 		}
 		let data = ajaxGet(sign_get_area, ajaxdata)
-		alert(JSON.stringify(data))
 		var map = new BMap.Map("container");
 		var point1 = new BMap.Point(longitude, latitude);
 
