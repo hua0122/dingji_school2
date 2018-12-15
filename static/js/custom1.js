@@ -62,7 +62,6 @@ function getydxc() {
 						'onMenuShareQZone', 'getLocation', 'chooseWXPay'
 					] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 				});
-
 				var title = "秀学车服务平台";
 				// var link = "http://ydxctrue.yidianxueche.cn/";
 				var link = "http://xxc.yidianxueche.cn/";
